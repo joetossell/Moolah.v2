@@ -1,0 +1,19 @@
+﻿@page
+@model Moolah.Monzo.Pages.EmailModel
+@{
+    ViewData["Title"] = "Emails";
+}
+
+<h1>@ViewData["Title"] </h1>
+
+<div class="row">
+    <div class="col-md-4">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <form method="post">
+                <p>Send test email to @Model.Email</p>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        }
+    </div>
+</div>

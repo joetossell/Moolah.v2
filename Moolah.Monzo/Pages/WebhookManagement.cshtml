@@ -1,0 +1,36 @@
+﻿@page
+@model Moolah.Monzo.Pages.WebhookManagementModel
+@{
+    ViewData["Title"] = "WebhookManagement";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Webhook Management</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        @if (!User.Identity.IsAuthenticated)
+        {
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        }
+        else
+        {
+            foreach (var account in Model.Accounts)
+            {
+                <a asp-page-handler="Register"
+                   asp-route-accountId="@account.Key" class="btn btn-primary">Register @account.Value.account.account_number</a>
+
+                <p>@account.Value.account.description</p>
+                foreach (var webhook in account.Value.webhooks)
+                {
+                    <p>@webhook.id</p>
+                    <p>@webhook.url</p>
+                    <a asp-page-handler="Delete"
+                       asp-route-accountId="@account.Key"
+                       asp-route-webhookId="@webhook.id" 
+                       class="btn btn-primary">Delete @webhook.id</a>
+                }
+            }
+        }
+    </div>
+</div>

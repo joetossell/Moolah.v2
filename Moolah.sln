@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moolah.Monzo", "Moolah.Monzo\Moolah.Monzo.csproj", "{6950D8CB-A652-4643-A0CF-CFE5D9A40DD2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moolah.Monzo.Client", "Moolah.Monzo.Client\Moolah.Monzo.Client.csproj", "{CB136232-0ADE-46D1-8A2D-2E6A614EC763}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moolah.Authentication.Webhook", "Moolah.Authentication.Webhook\Moolah.Authentication.Webhook.csproj", "{D952F8C7-28C7-4F0D-99EB-2218ACC8D420}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moolah.Calculations", "Moolah.Calculations\Moolah.Calculations.csproj", "{BA7CE09C-EAB3-4172-A86C-076427A45213}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moolah.Calculations.Test", "Moolah.Calculations.Test\Moolah.Calculations.Test.csproj", "{AE40C590-DC56-4AE6-A138-626BF645B732}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6950D8CB-A652-4643-A0CF-CFE5D9A40DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6950D8CB-A652-4643-A0CF-CFE5D9A40DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6950D8CB-A652-4643-A0CF-CFE5D9A40DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6950D8CB-A652-4643-A0CF-CFE5D9A40DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB136232-0ADE-46D1-8A2D-2E6A614EC763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB136232-0ADE-46D1-8A2D-2E6A614EC763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB136232-0ADE-46D1-8A2D-2E6A614EC763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB136232-0ADE-46D1-8A2D-2E6A614EC763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D952F8C7-28C7-4F0D-99EB-2218ACC8D420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D952F8C7-28C7-4F0D-99EB-2218ACC8D420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D952F8C7-28C7-4F0D-99EB-2218ACC8D420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D952F8C7-28C7-4F0D-99EB-2218ACC8D420}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA7CE09C-EAB3-4172-A86C-076427A45213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA7CE09C-EAB3-4172-A86C-076427A45213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA7CE09C-EAB3-4172-A86C-076427A45213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA7CE09C-EAB3-4172-A86C-076427A45213}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE40C590-DC56-4AE6-A138-626BF645B732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE40C590-DC56-4AE6-A138-626BF645B732}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE40C590-DC56-4AE6-A138-626BF645B732}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE40C590-DC56-4AE6-A138-626BF645B732}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8950977E-EF5C-4331-B746-63E0D2EDBE9A}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,26 @@
+﻿@page
+@model Moolah.Monzo.Pages.MonzoModel
+@{
+    ViewData["Title"] = "Monzo";
+}
+
+<h1>@ViewData["Title"] </h1>
+
+
+<div class="row">
+    <div class="col-md-12">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <ul>
+                <li>Authenticated:  @Model.WhoAmI.authenticated</li>
+                <li>ClientId:  @Model.WhoAmI.client_id</li>
+                <li>UserId:  @Model.WhoAmI.user_id</li>
+            </ul>
+            foreach (var account in Model.Accounts)
+            {
+                <p>@account.account_number</p>
+                <p>@account.description</p>
+            }
+        }
+    </div>
+</div>
