@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Globalization;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using IdentityModel.AspNetCore.AccessTokenManagement;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authorization.Policy;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
@@ -43,13 +39,6 @@ namespace Moolah.Monzo.IdentityModel
         /// <inheritdoc/>
         public async Task<UserAccessToken> GetTokenAsync(ClaimsPrincipal user)
         {
-            var result = await EndpointAuthenticateAsync();
-
-            if (!result.Succeeded)
-            {
-                return null;
-            }
-
             var identityUser = await _userManager.GetUserAsync(user);
             var accessToken = await _userManager.GetAuthenticationTokenAsync(identityUser, _options.User.Scheme,
                 OpenIdConnectParameterNames.AccessToken);
@@ -95,23 +84,6 @@ namespace Moolah.Monzo.IdentityModel
                     OpenIdConnectParameterNames.RefreshToken, refreshToken);
             }
             await _userManager.SetAuthenticationTokenAsync(iu, _options.User.Scheme, "expires_at", expiration.ToString("o", CultureInfo.InvariantCulture));
-        }
-
-        private async Task<AuthenticateResult> EndpointAuthenticateAsync()
-        {
-            var context = _contextAccessor.HttpContext;
-
-            var endpoint = context.GetEndpoint();
-            var authorizeData = endpoint?.Metadata.GetOrderedMetadata<IAuthorizeData>() ?? Array.Empty<IAuthorizeData>();
-            var policy = await AuthorizationPolicy.CombineAsync(_policyProvider, authorizeData);
-            if (policy == null)
-            {
-                return await context.AuthenticateAsync();
-            }
-
-            // Policy evaluator has transient lifetime so it fetched from request services instead of injecting in constructor
-            var policyEvaluator = context.RequestServices.GetRequiredService<IPolicyEvaluator>();
-            return await policyEvaluator.AuthenticateAsync(policy, context);
         }
 
         /// <inheritdoc/>
