@@ -19,7 +19,10 @@ namespace Moolah.Monzo.Client
 
         public async Task<TransactionResult> RetrieveTransaction(string id)
         {
-            return await _client.GetFromJsonAsync<TransactionResult>($"transactions/{id}?expand[]=merchant");
+            return await _client.GetFromJsonAsync<TransactionResult>($"transactions/{id}?expand[]=merchant", new JsonSerializerOptions
+            {
+                Converters = { new EmptyDateTimeOffsetToNullConverter() }
+            });
         }
 
         public async Task<TransactionResult> ListTransactions(string accountId, bool isFirstFiveMinutes = false)
@@ -27,7 +30,7 @@ namespace Moolah.Monzo.Client
             var url = $"transactions/?expand[]=merchant&account_id={accountId}{(isFirstFiveMinutes ? string.Empty : $"&since={DateTimeOffset.Now.AddDays(-90)}")}";
             return await _client.GetFromJsonAsync<TransactionResult>(url, new JsonSerializerOptions
             {
-                Converters = { new EmptyDateTimeOffsetOffsetToNullConverter()}
+                Converters = { new EmptyDateTimeOffsetToNullConverter()}
             });
         }
     }

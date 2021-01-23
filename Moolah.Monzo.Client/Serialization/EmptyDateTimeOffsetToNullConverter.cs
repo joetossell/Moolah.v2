@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Moolah.Monzo.Client.Serialization
 {
-    public class EmptyDateTimeOffsetOffsetToNullConverter : JsonConverter<DateTimeOffset?>
+    public class EmptyDateTimeOffsetToNullConverter : JsonConverter<DateTimeOffset?>
     {
         public override DateTimeOffset? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

@@ -46,7 +46,7 @@ namespace Moolah.Monzo
             services.AddControllers()
                 .AddJsonOptions(options =>
                 {
-                    options.JsonSerializerOptions.Converters.Add(new EmptyDateTimeOffsetOffsetToNullConverter());
+                    options.JsonSerializerOptions.Converters.Add(new EmptyDateTimeOffsetToNullConverter());
                 });
 
             // Note to self use identity server and store external tokens using UpdateExternalAuthenticationTokensAsync
