@@ -49,12 +49,8 @@ namespace Moolah.Monzo
                     options.JsonSerializerOptions.Converters.Add(new EmptyDateTimeOffsetToNullConverter());
                 });
 
-            // Note to self use identity server and store external tokens using UpdateExternalAuthenticationTokensAsync
-            // Access tokens to be retrieved as Simple delegation using an extension grant
-            // Azure function microservices architecture with Blazor frontend?
-            // Note identity server no longer open source???
             services.AddAuthentication()
-                .AddOAuth<ExtendedOAuthOptions, OAuthHandler<ExtendedOAuthOptions>>("Monzo", "Monzo", options =>
+                .AddOAuth<OAuthOptions, OAuthHandler<OAuthOptions>>("Monzo", "Monzo", options =>
                 {
                     options.ClientId = Configuration["Monzo:ClientId"];
                     options.ClientSecret = Configuration["Monzo:ClientSecret"];
@@ -77,7 +73,6 @@ namespace Moolah.Monzo
                     options.AuthorizationEndpoint = "https://auth.monzo.com/";
                     options.TokenEndpoint = "https://api.monzo.com/oauth2/token";
                     options.UserInformationEndpoint = "https://api.monzo.com/ping/whoami";
-                    options.RevocationEndpoint = "https://api.monzo.com/oauth2/logout";
                 })
                 .AddWebhook<WebHookService>();
 
